@@ -1,0 +1,81 @@
+import java.util.Scanner;
+class Customer {
+    String familia;
+    String name;
+    String ochestvo;
+    String adres;
+    String phone;
+    long nomercart;
+    long nomersceta;
+
+    Customer(String familia, String name, String ochestvo, String adres, String phone, long nomercart, long nomersceta) {
+        this.familia = familia;
+        this.name = name;
+        this.ochestvo = ochestvo;
+        this.adres = adres;
+        this.phone = phone;
+        this.nomercart = nomercart;
+        this.nomersceta = nomersceta;
+    }
+    void printInfo() {
+        System.out.println(familia + " " + name + " " + ochestvo +
+                "\nАдрес: " + adres +
+                "\nТелефон: " + phone +
+                "\nКарта: " + nomercart +
+                "\nСчёт: " + nomersceta
+        );
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Customer[] customers = new Customer[5];
+        customers[0] = new Customer(
+                "Иванов", "Алексей", "Петрович",
+                "г. Москва, ул. Ленина, д. 15, кв. 42",
+                "+7 (999) 123-45-67",
+                1234567890123456L,
+                9876543210987654L
+        );
+        customers[1] = new Customer(
+                "Петрова", "Мария", "Сергеевна",
+                "г. Санкт-Петербург, пр. Невский, д. 25",
+                "+7 (812) 987-65-43",
+                2345678901234567L,
+                8765432109876543L
+        );
+        customers[2] = new Customer(
+                "Сидоров", "Дмитрий", "Андреевич",
+                "г. Казань, ул. Баумана, д. 8",
+                "+7 (843) 555-12-34",
+                3456789012345678L,
+                7654321098765432L
+        );
+        customers[3] = new Customer(
+                "Козлова", "Елена", "Владимировна",
+                "г. Новосибирск, ул. Кирова, д. 45",
+                "+7 (383) 222-33-44",
+                4567890123456789L,
+                6543210987654321L
+        );
+        customers[4] = new Customer(
+                "Николаев", "Андрей", "Иванович",
+                "г. Екатеринбург, ул. Малышева, д. 77",
+                "+7 (343) 777-88-99",
+                5678901234567890L,
+                5432109876543210L
+        );
+        System.out.print("Введите номер кредитной карты для поиска: ");
+        long CardNumber = scanner.nextLong();
+        boolean found = false;
+        for (Customer c: customers){
+            if (c.nomercart==CardNumber){
+                c.printInfo();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Клиенты с таким номером карты не найдены.");
+        }
+    }
+}
