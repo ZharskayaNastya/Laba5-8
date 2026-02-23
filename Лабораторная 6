@@ -1,0 +1,64 @@
+import java.util.Scanner;
+class Reader{
+    String FIO;
+    int bilet;
+    String facultet;
+    int data;
+    String phone;
+    Reader(String FIO, int bilet, String facultet, int data, String phone){
+        this.FIO = FIO;
+        this.bilet=bilet;
+        this.facultet=facultet;
+        this.data=data;
+        this.phone=phone;
+    }
+    void takeBook (int n){
+        System.out.printf("%s взял книг: %d  ",this.FIO,n);
+        System.out.println();
+    }
+    void takeBook( String ... books ){
+        System.out.printf("%s взял книги: ", this.FIO);
+        for (int i = 0; i < books.length; i++) {
+            System.out.print(books[i]);
+            if (i < books.length - 1) System.out.print(", ");
+        }
+        System.out.println();
+    }
+    void returnBook(int n){
+        System.out.printf("%s вернул книг: %d",this.FIO,n);
+        System.out.println();
+    }
+    void returnBook( String ... books ){
+        System.out.printf("%s вернул книги: ", this.FIO);
+        for (int i = 0; i < books.length; i++) {
+            System.out.print(books[i]);
+            if (i < books.length - 1) System.out.print(", ");
+        }
+        System.out.println();
+    }
+}
+public class Main {
+    public static void main(String[] args){
+        Reader[] readers = new Reader[5];
+        readers[0] = new Reader("Петров В. В.", 17, "Программная инженерия", 2008, "8999999999");
+        readers[1] = new Reader("Иванов А. С.", 18, "Математика", 2007, "8888888888");
+        readers[2] = new Reader("Сидорова М. И.", 19, "Физика", 2009, "7777777777");
+        readers[3] = new Reader("Козлов Д. П.", 20, "Химия", 2006, "6666666666");
+        readers[4] = new Reader("Суздальцева Е. Р.", 21, "Биология", 2005, "5555555555");
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите количество книг для Петрова: ");
+        int n = scan.nextInt();
+        scan.nextLine();
+        String [] books = new String [n];
+        System.out.println("Введите книги");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Книга " + (i + 1) + ": ");
+            books[i] = scan.nextLine();
+        }
+        readers[0].takeBook(n);
+        readers[0].takeBook(books);
+        readers[0].returnBook(n);
+        readers[0].returnBook(books);
+        scan.close();
+    }
+}
