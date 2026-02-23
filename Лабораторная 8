@@ -1,0 +1,53 @@
+class  Person {
+    String name;
+    String surname;
+    int god;
+    Person(String name,String surname,int god){
+        this.name=name;
+        this.surname=surname;
+        this.god=god;
+    }
+    void printInfo() {
+        System.out.println("Человек: " + name + " " + surname + ", год рождения: " + god);
+    }
+}
+class Car{
+    String marka;
+    int vipusk;
+    double obm;
+    Car(String marka,int vipusk, double obm){
+        this.marka=marka;
+        this.vipusk=vipusk;
+        this.obm=obm;
+    }
+    void printInfo() {
+        System.out.println("Машина: " + marka + ", год выпуска: " + vipusk + ", объём двигателя: " + obm);
+    }
+}
+class Book{
+    String nazvanie;
+    String avtor;
+    int god;
+    Book(String nazvanie, String avtor, int god){
+        this.nazvanie=nazvanie;
+        this.avtor=avtor;
+        this.god=god;
+    }
+    void printInfo() {
+        System.out.println("Книга: " + nazvanie + ", автор: " + avtor + ", год выпуска: " + god);
+    }
+    void Info(Person person, Car car) {
+        System.out.printf("%s читает книгу %s про машину %s", person.name,this.nazvanie,car.marka);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Иван", "Иванов", 1990);
+        Car car = new Car("Toyota", 2020, 2.5);
+        Book book = new Book("Toyota для чайников", "Алексей Петров", 2023);
+        person.printInfo();
+        car.printInfo();
+        book.printInfo();
+        book.Info(person, car);
+    }
+}
