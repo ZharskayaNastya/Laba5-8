@@ -46,19 +46,22 @@ public class Main {
         readers[3] = new Reader("Козлов Д. П.", 20, "Химия", 2006, "6666666666");
         readers[4] = new Reader("Суздальцева Е. Р.", 21, "Биология", 2005, "5555555555");
         Scanner scan = new Scanner(System.in);
-        System.out.print("Введите количество книг для Петрова: ");
-        int n = scan.nextInt();
-        scan.nextLine();
-        String [] books = new String [n];
-        System.out.println("Введите книги");
-        for (int i = 0; i < n; i++) {
-            System.out.print("Книга " + (i + 1) + ": ");
-            books[i] = scan.nextLine();
+
+        for (int i = 0; i < readers.length; i++) {
+            System.out.print("Введите количество книг для " + readers[i].FIO + ": ");
+            int n = scan.nextInt();
+            scan.nextLine();
+            String[] books = new String[n];
+            System.out.println("Введите книги:");
+            for (int j = 0; j < n; j++) {
+                System.out.print("Книга " + (j + 1) + ": ");
+                books[j] = scan.nextLine();
+            }
+            readers[i].takeBook(n);
+            readers[i].takeBook(books);
+            readers[i].returnBook(n);
+            readers[i].returnBook(books);
+            System.out.println("-----------------");
         }
-        readers[0].takeBook(n);
-        readers[0].takeBook(books);
-        readers[0].returnBook(n);
-        readers[0].returnBook(books);
-        scan.close();
     }
 }
